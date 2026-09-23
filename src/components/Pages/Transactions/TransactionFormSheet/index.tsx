@@ -16,6 +16,7 @@ import { todayISO } from '@/lib/date';
 import { ApiError } from '@/lib/axios';
 import { centsToInputValue, parseMoneyToCents } from '@/lib/money';
 import { newUlid } from '@/lib/ulid';
+import { canAutoFocusSafely } from '@/lib/useAutoFocusSafe';
 import {
   TransactionFormZodSchema,
   type CreateTransactionProps,
@@ -84,6 +85,8 @@ function TransactionForm({
   const queryClient = useQueryClient();
   // o id nasce aqui e é reaproveitado se a pessoa tocar em "Salvar" duas vezes: o servidor não duplica
   const [newId] = useState(() => newUlid());
+  // em telas de toque, focar o campo cedo demais abre o teclado e fecha o Sheet (ver useAutoFocusSafe)
+  const [autoFocusAmount] = useState(canAutoFocusSafely);
 
   const activeAccounts = accounts.filter((account) => account.isActive || account.id === transaction?.id_account);
   const activeMembers = members.filter((member) => member.isActive || member.id === transaction?.id_user);
@@ -231,7 +234,7 @@ function TransactionForm({
           label="Valor (R$)"
           placeholder="0,00"
           autoComplete="off"
-          autoFocus={!transaction}
+          autoFocus={!transaction && autoFocusAmount}
           error={errors.amount?.message}
           {...register('amount')}
         />

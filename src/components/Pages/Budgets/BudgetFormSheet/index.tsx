@@ -13,6 +13,7 @@ import { ApiError } from '@/lib/axios';
 import { centsToInputValue, parseMoneyToCents } from '@/lib/money';
 import { BudgetFormZodSchema, type BudgetFormProps } from '@/lib/validationZodSchema/BudgetZodSchema';
 import { createBudget, deleteBudget, updateBudget } from '@/services/budgets';
+import { canAutoFocusSafely } from '@/lib/useAutoFocusSafe';
 import type { Budget } from '@/types/budget';
 import type { Category } from '@/types/category';
 import S from './style.module.scss';
@@ -63,6 +64,8 @@ function BudgetForm({
   setConfirmDelete: (value: boolean) => void;
 }) {
   const queryClient = useQueryClient();
+  // em telas de toque, focar o campo cedo demais abre o teclado e fecha o Sheet (ver useAutoFocusSafe)
+  const [autoFocusAmount] = useState(canAutoFocusSafely);
   const {
     register,
     handleSubmit,
@@ -129,7 +132,7 @@ function BudgetForm({
           label="Limite mensal (R$)"
           placeholder="0,00"
           autoComplete="off"
-          autoFocus
+          autoFocus={autoFocusAmount}
           error={errors.amount?.message}
           {...register('amount')}
         />
