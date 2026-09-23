@@ -1,0 +1,17 @@
+# Banco de desenvolvimento. Não é a configuração de produção.
+services:
+  finance-family-online-db:
+    image: postgres:17-alpine
+    container_name: finance-family-online-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: finance
+      POSTGRES_PASSWORD: finance_dev
+      POSTGRES_DB: finance_family_online
+    ports:
+      - "5435:5432"
+    volumes:
+      - finance-family-online-data:/var/lib/postgresql/data
+
+volumes:
+  finance-family-online-data:

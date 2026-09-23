@@ -1,0 +1,62 @@
+.submit {
+  margin-top: 18px;
+}
+
+.error {
+  margin-top: 14px;
+  color: var(--expense);
+  font-size: 13px;
+}
+
+.linkBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+
+.linkHelp {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.linkInput {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+}
+
+.pending {
+  margin-top: 20px;
+}
+
+.pendingTitle {
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.pendingRow {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  small {
+    color: var(--muted);
+    font-size: 12px;
+  }
+}

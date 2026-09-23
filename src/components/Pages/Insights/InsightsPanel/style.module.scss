@@ -1,0 +1,47 @@
+.bar {
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 16px;
+  align-items: start;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.list,
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.calm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 24px 0;
+  text-align: center;
+  color: var(--muted);
+
+  span {
+    font-size: 32px;
+  }
+
+  b {
+    color: var(--text);
+  }
+}
+
+.info {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--expense);
+}

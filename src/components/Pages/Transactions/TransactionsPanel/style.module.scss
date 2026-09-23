@@ -1,0 +1,80 @@
+// minmax(0, 1fr): a coluna não cresce com o conteúdo, então o valor nunca passa da borda do cartão.
+// No celular: Entradas e Saídas lado a lado e o Saldo numa linha inteira embaixo.
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+
+  @media (max-width: 760px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+
+  @media (max-width: 760px) {
+    padding: 14px;
+  }
+
+  &:last-child {
+    @media (max-width: 760px) {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.kpiLabel {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.kpiValue {
+  font-size: 24px;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 760px) {
+    font-size: 15px;
+  }
+}
+
+.income {
+  color: var(--income);
+}
+
+.expense {
+  color: var(--expense);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 0;
+  color: var(--muted);
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.info {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--expense);
+}

@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.title {
+  font-size: 26px;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 760px) {
+    font-size: 22px;
+  }
+}
+
+.subtitle {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

@@ -1,0 +1,36 @@
+.card {
+  width: min(440px, 100%);
+}
+
+.title {
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+
+.text {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.submit {
+  margin-top: 20px;
+  padding: 14px;
+}
+
+.error {
+  margin-top: 14px;
+  color: var(--expense);
+  font-size: 13px;
+}
+
+.footer {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.link {
+  color: var(--brand-text);
+  font-weight: 700;
+}

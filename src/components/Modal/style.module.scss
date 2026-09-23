@@ -1,0 +1,30 @@
+.modal {
+  margin: auto;
+  width: min(420px, 92vw);
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.title {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.body {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}

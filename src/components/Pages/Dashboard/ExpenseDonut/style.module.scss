@@ -1,0 +1,56 @@
+.donut {
+  width: 170px;
+  height: 170px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.hole {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 12px;
+
+  b {
+    display: block;
+    color: var(--text);
+    font-size: 16px;
+    letter-spacing: -0.5px;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+  list-style: none;
+  font-size: 13px;
+  font-weight: 600;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 3px;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 14px;
+}

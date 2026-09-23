@@ -1,0 +1,24 @@
+.bar {
+  height: 10px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+}
+
+.ok {
+  background: var(--income);
+}
+
+.warning {
+  background: var(--warning-fill);
+}
+
+.danger {
+  background: var(--expense);
+}

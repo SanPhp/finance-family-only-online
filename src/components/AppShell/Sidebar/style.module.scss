@@ -1,0 +1,65 @@
+.sidebar {
+  width: 250px;
+  flex: none;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 760px) {
+    display: none;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 18px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  color: var(--brand-ink);
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: var(--muted);
+
+  &:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+}
+
+.active,
+.active:hover {
+  color: var(--brand-ink);
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  box-shadow: 0 6px 16px rgba(109, 40, 217, 0.35);
+}

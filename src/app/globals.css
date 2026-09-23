@@ -1,0 +1,125 @@
+:root {
+  --bg: #f4f3fb;
+  --surface: #ffffff;
+  --surface-2: #f0eefb;
+  --text: #17132b;
+  --muted: #6b6785;
+  --border: #e3e0f3;
+  --border-strong: #cfcae6;
+  --brand: #6d28d9;
+  --brand-text: #6d28d9;
+  --brand-2: #9333ea;
+  --brand-ink: #ffffff;
+  --income: #047857;
+  --income-bg: #d1fae5;
+  --expense: #be123c;
+  --expense-bg: #ffe4e9;
+  --warning: #92400e;
+  --warning-fill: #f59e0b;
+  --on-color: #ffffff;
+  --warning-bg: #fef3c7;
+  --shadow: 0 6px 24px rgba(60, 30, 140, 0.08);
+  --radius: 18px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e0e10;
+    --surface: #18181b;
+    --surface-2: #232326;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --border: #2e2e33;
+    --border-strong: #46464d;
+    --brand: #7c3aed;
+    --brand-text: #a78bfa;
+    --brand-2: #c026d3;
+    --income: #34d399;
+    --income-bg: #0b3a2c;
+    --expense: #fb7185;
+    --expense-bg: #41111f;
+    --warning: #fbbf24;
+    --warning-fill: #fbbf24;
+    --on-color: #0e0e10;
+    --warning-bg: #3d2c07;
+    --shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0e0e10;
+  --surface: #18181b;
+  --surface-2: #232326;
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --border: #2e2e33;
+  --border-strong: #46464d;
+  --brand: #7c3aed;
+  --brand-text: #a78bfa;
+  --brand-2: #c026d3;
+  --income: #34d399;
+  --income-bg: #0b3a2c;
+  --expense: #fb7185;
+  --expense-bg: #41111f;
+  --warning: #fbbf24;
+  --warning-fill: #fbbf24;
+  --on-color: #0e0e10;
+  --warning-bg: #3d2c07;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brand-text);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

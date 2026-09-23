@@ -1,0 +1,28 @@
+.category {
+  margin-top: 14px;
+  font-size: 15px;
+}
+
+.help {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.save {
+  flex: 1;
+  padding: 14px;
+}
+
+.error {
+  margin-top: 14px;
+  color: var(--expense);
+  font-size: 13px;
+}

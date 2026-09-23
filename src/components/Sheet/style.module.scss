@@ -1,0 +1,99 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  position: fixed;
+  z-index: 100;
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  outline: none;
+
+  &[data-dir='bottom'] {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 92dvh;
+    border-radius: 20px 20px 0 0;
+  }
+
+  &[data-dir='right'] {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 480px;
+    max-width: 92vw;
+    border-radius: 18px 0 0 18px;
+    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.grab {
+  padding: 10px 0 4px;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  touch-action: none;
+}
+
+.handle {
+  width: 40px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--border-strong);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.headHidden {
+  padding: 0;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.close {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 20px;
+}
+
+.foot {
+  padding: 14px 20px calc(16px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

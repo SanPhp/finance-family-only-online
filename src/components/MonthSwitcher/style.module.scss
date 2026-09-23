@@ -1,0 +1,33 @@
+.month {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.label {
+  min-width: 150px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.today {
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--brand-text);
+  font-size: 13px;
+  font-weight: 700;
+}

@@ -1,0 +1,47 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 8px 14px;
+  border-radius: 99px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.on {
+  background: var(--brand);
+  border-color: var(--brand-text);
+  color: var(--brand-ink);
+}
+
+// Só no desktop; no celular o botão redondo ＋ (canto da tela) faz esse papel.
+// O "display: none" fica num invólucro: o próprio Button define display e vencia esta regra.
+.newButton {
+  @media (max-width: 760px) {
+    display: none;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}

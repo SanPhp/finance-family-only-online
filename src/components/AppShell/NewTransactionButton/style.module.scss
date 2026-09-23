@@ -1,0 +1,20 @@
+.fab {
+  display: none;
+
+  @media (max-width: 760px) {
+    position: fixed;
+    right: 16px;
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    z-index: 11;
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--brand-ink);
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.45);
+  }
+}

@@ -1,0 +1,96 @@
+.card {
+  max-width: 720px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.inactive {
+  opacity: 0.55;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--surface-2);
+  font-size: 20px;
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+
+  b {
+    font-size: 14.5px;
+  }
+
+  small {
+    color: var(--muted);
+    font-size: 12px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.link {
+  color: var(--brand-text);
+  font-size: 13px;
+  font-weight: 700;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.add {
+  margin-top: 14px;
+}
+
+.info {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.error {
+  color: var(--expense);
+  margin-bottom: 12px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+
+  b {
+    color: var(--text);
+    font-size: 20px;
+    letter-spacing: -0.5px;
+  }
+}
+
+.balance {
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.negative {
+  color: var(--expense);
+}

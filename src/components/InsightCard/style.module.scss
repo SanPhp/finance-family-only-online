@@ -1,0 +1,46 @@
+.card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-left: 5px solid;
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.danger {
+  border-left-color: var(--expense);
+}
+
+.warning {
+  border-left-color: var(--warning-fill);
+}
+
+.success {
+  border-left-color: var(--income);
+}
+
+.icon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.title {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.message {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--brand-text);
+  font-size: 13px;
+  font-weight: 700;
+}

@@ -1,0 +1,32 @@
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.emoji {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background: var(--surface-2);
+  font-size: 18px;
+}
+
+.selected {
+  border-color: var(--brand-text);
+}
+
+.error {
+  margin-top: 14px;
+  color: var(--expense);
+  font-size: 13px;
+}
+
+.info {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}

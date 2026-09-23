@@ -1,0 +1,191 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum FamilyRole {
+  ADMIN
+  MEMBER
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+enum AccountType {
+  CHECKING
+  CASH
+  CREDIT_CARD
+  SAVINGS
+}
+
+enum CommitmentStatus {
+  ACTIVE
+  DONE
+}
+
+model Family {
+  id         String   @id @default(ulid())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  users        User[]
+  invites      FamilyInvite[]
+  categories   Category[]
+  accounts     Account[]
+  transactions Transaction[]
+  budgets      Budget[]
+  commitments  Commitment[]
+
+  @@map("family")
+}
+
+model User {
+  id            String     @id @default(ulid())
+  id_family     String
+  name          String
+  email         String     @unique
+  password_hash String
+  role          FamilyRole @default(MEMBER)
+  isActive      Boolean    @default(true)
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+
+  family              Family         @relation(fields: [id_family], references: [id], onDelete: Restrict)
+  invitesCreated      FamilyInvite[]
+  transactionsSpent   Transaction[]  @relation("TransactionSpender")
+  transactionsCreated Transaction[]  @relation("TransactionCreator")
+
+  @@index([id_family])
+  @@map("user")
+}
+
+model FamilyInvite {
+  id            String     @id @default(ulid())
+  id_family     String
+  id_created_by String
+  email         String
+  role          FamilyRole @default(MEMBER)
+  token_hash    String     @unique
+  expires_at    DateTime
+  accepted_at   DateTime?
+  created_at    DateTime   @default(now())
+
+  family  Family @relation(fields: [id_family], references: [id], onDelete: Restrict)
+  creator User   @relation(fields: [id_created_by], references: [id], onDelete: Restrict)
+
+  @@index([id_family])
+  @@map("family_invite")
+}
+
+model Category {
+  id         String          @id @default(ulid())
+  id_family  String
+  name       String
+  icon       String
+  type       TransactionType
+  isActive   Boolean         @default(true)
+  created_at DateTime        @default(now())
+  updated_at DateTime        @updatedAt
+
+  family       Family        @relation(fields: [id_family], references: [id], onDelete: Restrict)
+  transactions Transaction[]
+  budgets      Budget[]
+  commitments  Commitment[]
+
+  @@unique([id_family, type, name])
+  @@map("category")
+}
+
+model Account {
+  id                    String      @id @default(ulid())
+  id_family             String
+  name                  String
+  type                  AccountType
+  opening_balance_cents Int         @default(0)
+  closing_day           Int?
+  due_day               Int?
+  isActive              Boolean     @default(true)
+  created_at            DateTime    @default(now())
+  updated_at            DateTime    @updatedAt
+
+  family       Family        @relation(fields: [id_family], references: [id], onDelete: Restrict)
+  transactions Transaction[]
+
+  @@index([id_family])
+  @@map("account")
+}
+
+model Transaction {
+  id            String          @id @default(ulid())
+  id_family     String
+  id_account    String
+  id_category   String
+  id_user       String?
+  id_created_by String
+  id_commitment String?
+  type          TransactionType
+  amount_cents  Int
+  description   String
+  occurred_on   DateTime        @db.Date
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @updatedAt
+  deleted_at    DateTime?
+
+  family     Family      @relation(fields: [id_family], references: [id], onDelete: Restrict)
+  account    Account     @relation(fields: [id_account], references: [id], onDelete: Restrict)
+  category   Category    @relation(fields: [id_category], references: [id], onDelete: Restrict)
+  spender    User?       @relation("TransactionSpender", fields: [id_user], references: [id], onDelete: Restrict)
+  creator    User        @relation("TransactionCreator", fields: [id_created_by], references: [id], onDelete: Restrict)
+  commitment Commitment? @relation(fields: [id_commitment], references: [id], onDelete: Restrict)
+
+  @@index([id_family, occurred_on])
+  @@index([id_family, id_category, occurred_on])
+  @@map("transaction")
+}
+
+model Budget {
+  id           String   @id @default(ulid())
+  id_family    String
+  id_category  String
+  amount_cents Int
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  family   Family   @relation(fields: [id_family], references: [id], onDelete: Restrict)
+  category Category @relation(fields: [id_category], references: [id], onDelete: Restrict)
+
+  @@unique([id_family, id_category])
+  @@map("budget")
+}
+
+// Dívida parcelada (ex.: celular em 10x). "paid_installments" é um contador manual — o dev decidiu
+// não gerar lançamentos automaticamente. A pessoa lança o gasto normal e opcionalmente vincula a este
+// compromisso (soma +1 automático); também pode ajustar o contador na mão a qualquer momento (ex.:
+// parcelas já pagas antes de cadastrar o compromisso no sistema).
+model Commitment {
+  id                 String           @id @default(ulid())
+  id_family          String
+  id_category        String
+  name               String
+  amount_cents       Int
+  total_installments Int
+  paid_installments  Int              @default(0)
+  status             CommitmentStatus @default(ACTIVE)
+  due_day            Int?
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @updatedAt
+
+  family       Family        @relation(fields: [id_family], references: [id], onDelete: Restrict)
+  category     Category      @relation(fields: [id_category], references: [id], onDelete: Restrict)
+  transactions Transaction[]
+
+  @@index([id_family])
+  @@map("commitment")
+}
