@@ -86,6 +86,11 @@
   background: var(--surface);
 }
 
+// teclado aberto: o indicador de "home" do iPhone fica escondido, não precisa da folga de baixo
+.content[data-keyboard='true'] .foot {
+  padding-bottom: 14px;
+}
+
 .srOnly {
   position: absolute;
   width: 1px;

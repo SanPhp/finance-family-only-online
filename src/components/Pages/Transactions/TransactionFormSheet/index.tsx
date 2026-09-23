@@ -275,7 +275,7 @@ function TransactionForm({
           </Select>
         )}
 
-        <Select label="Quem gastou" error={errors.id_user?.message} {...register('id_user')}>
+        <Select label={type === 'INCOME' ? 'Quem recebeu' : 'Quem gastou'} error={errors.id_user?.message} {...register('id_user')}>
           <option value="shared">Família (compartilhado)</option>
           {activeMembers.map((member) => (
             <option key={member.id} value={member.id}>{member.name}</option>
