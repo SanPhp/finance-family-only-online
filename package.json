@@ -1,15 +1,13 @@
 {
   "name": "finance-family-only-online",
   "version": "0.1.0",
-  "engines": {
-    "node": "24.x"
-  },
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
